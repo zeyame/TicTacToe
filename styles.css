@@ -1,0 +1,31 @@
+.header {
+    text-align: center;
+    font-size: 70px;
+}
+div {
+    border: none;
+}
+
+.cell {
+    border: none;
+    border-right: 10px solid black;
+    border-bottom: 10px solid black;
+}
+
+.cell-3, .cell-6, .cell-9 {
+    border-right: none;
+}
+
+.cell-7, .cell-8, .cell-9 {
+    border-bottom: none;
+}
+
+.grid-container {
+    display: grid;
+    position: absolute;
+    grid-template-columns: 1fr 1fr 1fr;
+    top: 25%;
+    right: 42%;
+    height: 350px;
+    width: 300px;
+}
