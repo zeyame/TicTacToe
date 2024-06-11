@@ -1,5 +1,6 @@
 let playerTurn;     // stores the current player's turn
 let gameWon = false;        // keeps track of whether the game has been won or not
+const lightDarkButton = document.querySelector('.color-mode-btn-js');
 
 // retrieve the current score from the local storage or assign a new score of 0-0
 let score = JSON.parse(localStorage.getItem('score')) || {
@@ -25,7 +26,7 @@ playGame();
 startingPlayer();  
 handleNewGame();    
 handleResetButton();       
-
+handleColorModeButton();
 
 function startingPlayer() {
     const currentDisplayMsg = document.querySelector('.current-display-msg-js');
@@ -311,4 +312,73 @@ function removeWinningLine() {
     const lastWinningLine = elementClasses.item(elementClasses.length-1);
     
     if (lastWinningLine !== 'winning-line' && lastWinningLine !== 'winning-line-js') elementClasses.remove(lastWinningLine);
+}
+
+
+function handleColorModeButton() {
+    lightDarkButton.addEventListener('click', () => {
+        if (lightDarkButton.classList.contains('light-mode')) {
+            lightToDark();
+        }
+
+        else if (lightDarkButton.classList.contains('dark-mode')) {
+            darkToLight();
+        }
+    });
+
+    document.body.addEventListener('keydown', (event) => {
+        if (lightDarkButton.classList.contains('light-mode')) {
+            if (event.key === 'd') {
+                lightToDark();
+            }
+        }
+
+        else if (lightDarkButton.classList.contains('dark-mode')) {
+            if (event.key === 'l') {
+                darkToLight();
+            }
+        }
+    });
+}
+
+function darkToLight() {
+    lightDarkButton.classList.remove('dark-mode');
+    lightDarkButton.classList.add('light-mode');
+    lightDarkButton.innerHTML = 'Dark Mode';
+
+    // Adding a light mode class to the body
+    document.body.classList.add('body-light-mode');
+
+    // Adding a light mode class to buttons
+    const allButtons = document.querySelectorAll('button');
+    allButtons.forEach(button => button.classList.add('button-light-mode'));
+
+    // Adding a light mode class to the cells 
+    const gridCells = document.querySelectorAll('.cell');
+    gridCells.forEach(cell => cell.classList.add('cell-light-mode'));
+
+    // Adding a light mode class to the winning line
+    const winningLineElement = document.querySelector('.winning-line');
+    winningLineElement.classList.add('winning-line-light-mode');
+}
+
+function lightToDark() {
+    lightDarkButton.classList.remove('light-mode');
+    lightDarkButton.classList.add('dark-mode');
+    lightDarkButton.innerHTML = 'Light Mode';
+
+    // removing the light mode class from the body
+    document.body.classList.remove('body-light-mode');
+    
+    // Removing light mode from buttons
+    const allButtons = document.querySelectorAll('button');
+    allButtons.forEach(button => button.classList.remove('button-light-mode'));
+
+    // Removing light mode from cells
+    const gridCells = document.querySelectorAll('.cell');
+    gridCells.forEach(cell => cell.classList.remove('cell-light-mode'));
+
+    // Removing light mode from the last winning line
+    const winningLineElement = document.querySelector('.winning-line');
+    winningLineElement.classList.remove('winning-line-light-mode');
 }

@@ -3,6 +3,12 @@ body {
     background-color: black;
     color: white;
 }
+
+.body-light-mode {
+    background-color: white;
+    color: black;
+}
+
 .header {
     text-align: center;
     font-size: 70px;
@@ -19,7 +25,18 @@ p {
 }
 
 button {
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: white;
+    border-radius: 6px;
+    border-width: 1px;
     cursor: pointer;
+}
+
+.button-light-mode {
+    background-color: black;
+    color: white;
 }
 
 .score {
@@ -50,6 +67,11 @@ button {
     border-bottom: 10px solid white;
 }
 
+.cell-light-mode {
+    border-right: 10px solid black;
+    border-bottom: 10px solid black;
+}
+
 .x-symbol, .o-symbol {
     position: absolute;
     font-size: 45px;
@@ -73,6 +95,7 @@ button {
     width: 300px;
 }
 
+
 .current-display-msg {
     position: absolute;
     left: 50%;
@@ -80,12 +103,6 @@ button {
     font-size: 25px;
 }
 
-
-.reset-score-btn, .new-game-btn, .light-mode-btn {
-    padding: 10px 15px;
-    font-size: 14px;
-    font-weight: bold;
-}
 .reset-score-btn {
     position: absolute;
     bottom: 17%;
@@ -98,7 +115,7 @@ button {
     left: 44%;
 }
 
-.light-mode-btn {
+.color-mode-btn {
     position: absolute;
     display: block;
     bottom: 10%;
@@ -108,8 +125,13 @@ button {
 
 .winning-line {
     position: absolute;
-    border-bottom: 4px solid white;
+    border-bottom: 4px solid;
     z-index: 10;
+}
+
+.winning-line-light-mode {
+    border-bottom: 4px solid;
+    z-index: 20;
 }
 
 .row-1-win {
@@ -134,7 +156,7 @@ button {
 }
 
 .column-1-win {
-    border-right: 4px solid white;
+    border-right: 4px solid;
     top: 5%;
     left: 14%;
     width: 0px;
@@ -142,7 +164,7 @@ button {
 }
 
 .column-2-win {
-    border-right: 4px solid white;
+    border-right: 4px solid;
     top: 5%;
     left: 47.7%;
     width: 0px;
@@ -150,7 +172,7 @@ button {
 }
 
 .column-3-win {
-    border-right: 4px solid white;
+    border-right: 4px solid;
     top: 5%;
     left: 83%;
     width: 0px;
@@ -162,7 +184,7 @@ button {
     top: 0;
     left: 5%;
     width: 450px;
-    height: 4px;
+    height: 0px;
     transform: rotate(53deg);
     transform-origin: top left;
 }
