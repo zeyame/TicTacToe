@@ -20,11 +20,11 @@ let cells = new Map([
     ['cell-9', ''],
 ]);
 
-displayScore();     // displays the current score at the run of the script
-playGame();         // handles all cell clicks allowing the user to play the game
-startingPlayer();   // randomly generates a player for the starting turn
-handleNewGame();    // empties grid and resets the plays for a new game
-resetScore();       // resets the score when reset button is clicked
+displayScore();
+playGame();  
+startingPlayer();  
+handleNewGame();    
+handleResetButton();       
 
 
 function startingPlayer() {
@@ -237,6 +237,7 @@ function checkDiagonalWin() {
     }
 }
 
+
 function displayScore() {
     const xScoreElement = document.querySelector('.x-score-js');
     const oScoreElement = document.querySelector('.o-score-js');
@@ -245,13 +246,27 @@ function displayScore() {
     oScoreElement.innerHTML = `O: ${score['o']}`;
 }
 
+
 function handleNewGame() {
     const newGameButtonElement = document.querySelector('.new-game-btn-js');
     const lastDisplayMsg = document.querySelector('.current-display-msg-js');
 
     // adding an event listener to the new game button
     newGameButtonElement.addEventListener('click', () => {
-        lastDisplayMsg.innerHTML = '';       // removing last turn's result display message
+        restartGame();
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === ' ') {
+            restartGame();
+        }
+    })
+}
+
+function restartGame() { 
+        // restarting the turns 
+        startingPlayer();
+
         // resetting the game state
         gameWon = false;    
         for (let [key] of cells) {
@@ -261,16 +276,38 @@ function handleNewGame() {
             const cellElement = document.querySelector(`.${key}`);
             cellElement.innerHTML = '';
         }
+
+        // removing the winning line from last game
+        removeWinningLine();
+}
+
+
+function handleResetButton() {
+    const resetScoreElement = document.querySelector('.reset-score-btn-js');
+    resetScoreElement.addEventListener('click', () => {
+        resetScore();
     });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Backspace') {
+            resetScore();
+        }
+    })
 }
 
 function resetScore() {
-    const resetScoreElement = document.querySelector('.reset-score-btn-js');
-    // we reset the score and override the score element in local storage
-    resetScoreElement.addEventListener('click', () => {
+        // we reset the score and override the score element in local storage
         score['x'] = 0;
         score['o'] = 0;
         localStorage.setItem('score', JSON.stringify(score));
         displayScore();
-    });
+}
+
+
+// function removes the last winning line drawn
+function removeWinningLine() {
+    const winningLineElement = document.querySelector('.winning-line-js');
+    const elementClasses = winningLineElement.classList;
+    const lastWinningLine = elementClasses.item(elementClasses.length-1);
+    elementClasses.remove(lastWinningLine);
 }

@@ -1,3 +1,6 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
 .header {
     text-align: center;
     font-size: 70px;
@@ -13,24 +16,31 @@ p {
     padding: 0px;
 }
 .score {
-    font-size: 40px;
-    display: grid;
-    display: inline-block;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    top: 40%;
-    left: 20%;
+    display: flex;
     position: absolute;
-    width: 100px;
+    font-size: 40px;
+    align-items: center;
+    justify-content: center;
+    bottom: 35%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
+.x-score {
+    margin-right: 10px;
+}
+
+.o-score {
+    margin-left: 10px;
+}
 .cell {
+    position: relative;    /* making the cell a position context for its contents */
     display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
     border-right: 10px solid black;
     border-bottom: 10px solid black;
-    justify-content: center;
-    align-items: center;
 }
 
 .cell-3, .cell-6, .cell-9 {
@@ -58,16 +68,26 @@ p {
     font-size: 25px;
 }
 
-.x-symbol, .o-symbol {
-    position: relative;
-    max-width: 40%;
-    max-height: 40%;
-    object-fit: cover;
+.x-symbol,
+.o-symbol {
+    position: absolute;
+    width: 40%; 
+    height: 40%;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    border: none;
+    background-image:none;
 }
 
-.row-1-win {
+.reset-score-btn {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    border-bottom: 1px solid black;
+    bottom: 25%;
+    left: 50%;
+}
+
+.new-game-btn {
+    position: absolute;
+    bottom: 25%;
+    left: 45%;
 }
