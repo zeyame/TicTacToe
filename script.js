@@ -1,6 +1,6 @@
 let playerTurn;     // stores the current player's turn
 let gameWon = false;        // keeps track of whether the game has been won or not
-const lightDarkButton = document.querySelector('.color-mode-btn-js');
+const lightDarkButton = document.querySelector('.color-mode-btn-js');       // variable used in multiple functions and so was made global
 
 // retrieve the current score from the local storage or assign a new score of 0-0
 let score = JSON.parse(localStorage.getItem('score')) || {
