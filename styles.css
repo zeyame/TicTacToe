@@ -28,7 +28,7 @@ button {
     font-size: 40px;
     align-items: center;
     justify-content: center;
-    bottom: 33%;
+    bottom: 25%;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -88,20 +88,90 @@ button {
 }
 .reset-score-btn {
     position: absolute;
-    bottom: 25%;
+    bottom: 17%;
     left: 50%;
 }
 
 .new-game-btn {
     position: absolute;
-    bottom: 25%;
+    bottom: 17%;
     left: 44%;
 }
 
 .light-mode-btn {
     position: absolute;
     display: block;
-    bottom: 16%;
+    bottom: 10%;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.winning-line {
+    position: absolute;
+    border-bottom: 4px solid white;
+    z-index: 10;
+}
+
+.row-1-win {
+    top: 14%;
+    left: 0;
+    width: 100%;
+    height: 4px;
+}
+
+.row-2-win {
+    top: 49%;
+    left: 0;
+    width: 100%;
+    height: 4px;
+}
+
+.row-3-win {
+    top: 82%;
+    left: 0;
+    width: 100%;
+    height: 4px;
+}
+
+.column-1-win {
+    border-right: 4px solid white;
+    top: 5%;
+    left: 14%;
+    width: 0px;
+    height: 340px;
+}
+
+.column-2-win {
+    border-right: 4px solid white;
+    top: 5%;
+    left: 47.7%;
+    width: 0px;
+    height: 340px;
+}
+
+.column-3-win {
+    border-right: 4px solid white;
+    top: 5%;
+    left: 83%;
+    width: 0px;
+    height: 340px;
+}
+
+
+.diagonal-1-win {
+    top: 0;
+    left: 5%;
+    width: 450px;
+    height: 4px;
+    transform: rotate(53deg);
+    transform-origin: top left;
+}
+
+.diagonal-2-win {
+    top: 0;
+    right: 5%;
+    width: 450px;
+    height: 4px;
+    transform: rotate(-52deg);
+    transform-origin: top right;
 }

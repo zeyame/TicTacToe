@@ -309,5 +309,6 @@ function removeWinningLine() {
     const winningLineElement = document.querySelector('.winning-line-js');
     const elementClasses = winningLineElement.classList;
     const lastWinningLine = elementClasses.item(elementClasses.length-1);
-    elementClasses.remove(lastWinningLine);
+    
+    if (lastWinningLine !== 'winning-line' && lastWinningLine !== 'winning-line-js') elementClasses.remove(lastWinningLine);
 }
