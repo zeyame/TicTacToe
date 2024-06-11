@@ -57,7 +57,7 @@ function playGame() {
                 // handling the x turn
                 if (playerTurn === 'x') {
                     cells.set(cell, 'x');
-                    cellClicked.innerHTML = `<img class="x-symbol x-symbol-js" src="images/x.png" alt="X symbol">`;
+                    cellClicked.innerHTML = '<p class="x-symbol x-symbol-js">X</p>';
                     checkWin();
 
                     // if game still has not been won we check if it was a draw                    
@@ -79,7 +79,7 @@ function playGame() {
                 // we do the same thing for the o turn
                 else {
                     cells.set(cell, 'o');
-                    cellClicked.innerHTML = `<img class="o-symbol o-symbol-js" src="images/o.png" alt="O symbol">`;
+                    cellClicked.innerHTML = '<p class="o-symbol o-symbol-js">O</p>';
                     checkWin();
                     
                     if (!gameWon) {
