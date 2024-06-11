@@ -4,16 +4,37 @@
 }
 div {
     border: none;
+    padding: 0px;
+}
+
+p {
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+}
+.score {
+    font-size: 40px;
+    display: grid;
+    display: inline-block;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    top: 40%;
+    left: 20%;
+    position: absolute;
+    width: 100px;
 }
 
 .cell {
+    display: flex;
     border: none;
     border-right: 10px solid black;
     border-bottom: 10px solid black;
+    justify-content: center;
+    align-items: center;
 }
 
 .cell-3, .cell-6, .cell-9 {
-    border-right: none;
+    border-right: white;
 }
 
 .cell-7, .cell-8, .cell-9 {
@@ -28,4 +49,25 @@ div {
     right: 42%;
     height: 350px;
     width: 300px;
+}
+
+.current-display-msg {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 25px;
+}
+
+.x-symbol, .o-symbol {
+    position: relative;
+    max-width: 40%;
+    max-height: 40%;
+    object-fit: cover;
+}
+
+.row-1-win {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-bottom: 1px solid black;
 }
